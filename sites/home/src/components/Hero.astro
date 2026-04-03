@@ -1,0 +1,181 @@
+---
+import { type Lang, t } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const i = t(lang);
+---
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <svg class="grid-svg" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(15,118,110,0.08)" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+      <circle cx="400" cy="300" r="200" fill="none" stroke="rgba(15,118,110,0.06)" stroke-width="1"/>
+      <circle cx="400" cy="300" r="320" fill="none" stroke="rgba(15,118,110,0.04)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="container hero-content">
+    <div class="hero-text">
+      <div class="hero-tag badge">Software Consulting</div>
+      <h1 class="hero-headline">{i.hero.headline}</h1>
+      <p class="hero-sub">{i.hero.sub}</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">{i.hero.cta}</a>
+        <a href="#services" class="btn btn-outline">{i.hero.ctaSecondary}</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="terminal-body">
+          <code>
+            <span class="t-muted">$</span> <span class="t-brand">villartech</span> diagnose --stack java<br/>
+            <br/>
+            <span class="t-muted">analyzing</span> gc pauses, thread contention, query plans...<br/>
+            <br/>
+            <span class="t-green">✓</span> heap reduced 40% <span class="t-muted">(G1GC tuning)</span><br/>
+            <span class="t-green">✓</span> p99 latency 320ms → 48ms<br/>
+            <span class="t-green">✓</span> connection pool optimized<br/>
+            <br/>
+            <span class="t-muted">$</span> <span class="t-cursor">_</span>
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 5rem;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .grid-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-content {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+  }
+
+  .hero-tag {
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: var(--space-lg);
+    max-width: 560px;
+  }
+
+  .hero-sub {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  /* Terminal visual */
+  .terminal {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .terminal-bar {
+    display: flex;
+    gap: 6px;
+    padding: 0.75rem 1rem;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .dot-red { background: #ef4444; }
+  .dot-yellow { background: #eab308; }
+  .dot-green { background: #22c55e; }
+
+  .terminal-body {
+    padding: 1.25rem;
+    font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+    font-size: var(--text-sm);
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .t-muted { color: var(--text-muted); }
+  .t-brand { color: var(--brand-light); }
+  .t-green { color: #22c55e; }
+
+  .t-cursor {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  .hero-visual {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-visual {
+      display: block;
+    }
+  }
+</style>

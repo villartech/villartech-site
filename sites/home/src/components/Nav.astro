@@ -1,0 +1,209 @@
+---
+import { type Lang, t } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const i = t(lang);
+---
+
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href={lang === 'en' ? '/en/' : '/'} class="logo">
+      <span class="logo-mark">V</span>
+      <span class="logo-text">VillarTech</span>
+    </a>
+
+    <div class="nav-links" id="nav-links">
+      <a href="#services">{i.nav.services}</a>
+      <a href="#products">{i.nav.products}</a>
+      <a href="#expertise">{i.nav.expertise}</a>
+      <a href="#tech">{i.nav.tech}</a>
+      <a href="#contact">{i.nav.contact}</a>
+      <a href={i.langToggleHref} class="lang-toggle">{i.langToggle}</a>
+    </div>
+
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-primary nav-cta">{i.nav.cta}</a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0.875rem 0;
+    background: rgba(12, 12, 12, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition-normal);
+  }
+
+  .nav.scrolled {
+    border-bottom-color: var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: var(--text-lg);
+    color: var(--text);
+    flex-shrink: 0;
+  }
+
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: var(--brand);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    font-weight: 800;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+
+  .nav-links a {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+  }
+
+  .lang-toggle {
+    font-weight: 600;
+    font-size: var(--text-xs) !important;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted) !important;
+    letter-spacing: 0.05em;
+  }
+
+  .lang-toggle:hover {
+    border-color: var(--brand);
+    color: var(--brand-light) !important;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .nav-cta {
+    font-size: var(--text-xs);
+    padding: 0.5rem 1.25rem;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 1px;
+    transition: all var(--transition-fast);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      padding: var(--space-lg);
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      gap: var(--space-lg);
+    }
+
+    .nav-links.open {
+      display: flex;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+
+    .menu-toggle.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('menu-toggle')!;
+  const links = document.getElementById('nav-links')!;
+  const nav = document.getElementById('nav')!;
+
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+
+  links.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+</script>

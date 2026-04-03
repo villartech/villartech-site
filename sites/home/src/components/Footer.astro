@@ -1,0 +1,76 @@
+---
+import { type Lang, t } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const i = t(lang);
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">VillarTech</span>
+    </div>
+
+    <nav class="footer-links">
+      <a href="#services">{i.footer.links.services}</a>
+      <a href="#products">{i.footer.links.products}</a>
+      <a href="#expertise">{i.footer.links.expertise}</a>
+      <a href="#contact">{i.footer.links.contact}</a>
+    </nav>
+
+    <p class="footer-copy">{i.footer.copy}</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: var(--space-2xl) 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .footer-inner {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  .footer-logo {
+    font-weight: 700;
+    font-size: var(--text-base);
+    color: var(--text);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: var(--space-xl);
+  }
+
+  .footer-links a {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    transition: color var(--transition-fast);
+  }
+
+  .footer-links a:hover {
+    color: var(--text);
+  }
+
+  .footer-copy {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+</style>

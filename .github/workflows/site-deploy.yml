@@ -1,0 +1,36 @@
+name: Deploy Site
+
+on:
+  push:
+    branches: [main]
+    paths: ['sites/**']
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: sites/home/package-lock.json
+
+      - name: Install dependencies
+        working-directory: sites/home
+        run: npm ci
+
+      - name: Build
+        working-directory: sites/home
+        run: npm run build
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          channelId: live
+          projectId: villartech-br

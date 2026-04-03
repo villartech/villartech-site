@@ -1,0 +1,102 @@
+---
+import { type Lang, t } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const i = t(lang);
+---
+
+<section class="section expertise-section" id="expertise">
+  <div class="container">
+    <div class="expertise-layout">
+      <div class="expertise-left reveal">
+        <h2 class="expertise-title">{i.expertise.title}</h2>
+        <div class="expertise-line"></div>
+      </div>
+
+      <div class="expertise-right">
+        {i.expertise.items.map((item) => (
+          <div class="expertise-item reveal">
+            <span class="expertise-value">{item.value}</span>
+            <span class="expertise-label">{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .expertise-section {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .expertise-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+
+  @media (min-width: 768px) {
+    .expertise-layout {
+      grid-template-columns: 1fr 1.5fr;
+      align-items: start;
+    }
+  }
+
+  .expertise-title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .expertise-line {
+    width: 3rem;
+    height: 3px;
+    background: var(--brand);
+    margin-top: var(--space-lg);
+    border-radius: 2px;
+  }
+
+  .expertise-right {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 480px) {
+    .expertise-right {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .expertise-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-lg);
+    border-left: 2px solid var(--border);
+    transition: border-color var(--transition-normal);
+  }
+
+  .expertise-item:hover {
+    border-left-color: var(--brand);
+  }
+
+  .expertise-value {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--brand-light);
+  }
+
+  .expertise-label {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+</style>
