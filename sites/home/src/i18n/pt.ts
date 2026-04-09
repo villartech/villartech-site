@@ -69,24 +69,26 @@ export const pt = {
     subtitle: 'Soluções próprias que combinam tecnologia e experiência real para resolver problemas concretos.',
     concursino: {
       name: 'Concursino',
-      tagline: 'Preparação para concursos do jeito certo.',
-      desc: 'Plataforma de estudos para concursos públicos com repetição espaçada, gamificação e microaulas. Funciona como Duolingo — mas para concursos.',
+      tagline: 'Como o Duolingo, mas para concursos.',
+      desc: 'Passe no concurso estudando 5 minutos por dia. Algoritmo FSRS de repetição espaçada, gamificação completa e modo offline. Web e mobile.',
       features: [
-        'Repetição espaçada com algoritmo inteligente',
-        'Gamificação: streaks, badges e desafios',
-        'Microaulas criadas por especialistas',
+        'FSRS: revisão inteligente que otimiza sua memória',
+        'XP, combos, streaks, ranking e conquistas',
+        'Simulados cronometrados com provas reais',
+        'Estude offline — baixe questões no celular',
       ],
       cta: 'Acessar',
-      url: 'https://concursino.com.br',
+      url: 'https://www.concursino.com.br',
     },
     fitperson: {
       name: 'FitPerson',
-      tagline: 'Gestão inteligente para personal trainers.',
-      desc: 'Plataforma para personal trainers criarem treinos personalizados com IA, acompanharem progresso de clientes e gerenciarem sua carreira.',
+      tagline: 'Tudo que o personal trainer precisa em um só lugar.',
+      desc: 'Plataforma completa para gestão de clientes, treinos, nutrição, agenda e faturamento. Com gamificação para engajamento e pagamentos via PIX.',
       features: [
-        'Planos de treino gerados com IA',
-        'Dashboard de progresso dos clientes',
-        'Gestão de agenda e faturamento',
+        'Treinos personalizados com 600+ exercícios',
+        'Planos nutricionais integrados',
+        'Chat com clientes e acompanhamento em tempo real',
+        'Cobrança automática com PIX e boleto',
       ],
       cta: 'Em breve',
     },
@@ -112,6 +114,10 @@ export const pt = {
 
   footer: {
     copy: `© ${new Date().getFullYear()} VillarTech. Todos os direitos reservados.`,
+    legalName: 'Lucas Villar Batista de Carvalho Cia Ltda - ME',
+    tradeName: 'Villar Consultoria e Tecnologia',
+    cnpjLabel: 'CNPJ',
+    cnpj: '53.074.782/0001-70',
     links: {
       services: 'Serviços',
       products: 'Produtos',

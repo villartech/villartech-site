@@ -69,24 +69,26 @@ export const en = {
     subtitle: 'In-house solutions that combine technology and real-world experience to solve concrete problems.',
     concursino: {
       name: 'Concursino',
-      tagline: 'Exam prep done right.',
-      desc: 'Study platform for public service exams with spaced repetition, gamification, and micro-lessons. Works like Duolingo — but for Brazilian public exams.',
+      tagline: 'Like Duolingo, but for public exams.',
+      desc: 'Pass your exam studying just 5 minutes a day. FSRS spaced repetition algorithm, full gamification, and offline mode. Web and mobile.',
       features: [
-        'Spaced repetition with smart algorithm',
-        'Gamification: streaks, badges, and challenges',
-        'Micro-lessons created by specialists',
+        'FSRS: smart review that optimizes your memory',
+        'XP, combos, streaks, leaderboards, and achievements',
+        'Timed practice tests with real exam questions',
+        'Study offline — download questions to your phone',
       ],
       cta: 'Visit',
-      url: 'https://concursino.com.br',
+      url: 'https://www.concursino.com.br',
     },
     fitperson: {
       name: 'FitPerson',
-      tagline: 'Smart management for personal trainers.',
-      desc: 'Platform for personal trainers to create AI-powered workout plans, track client progress, and manage their careers.',
+      tagline: 'Everything a personal trainer needs in one place.',
+      desc: 'Complete platform for client management, workouts, nutrition, scheduling, and billing. With gamification for engagement and integrated payments.',
       features: [
-        'AI-generated workout plans',
-        'Client progress dashboard',
-        'Schedule and billing management',
+        'Custom workouts with 600+ exercises',
+        'Integrated nutrition plans',
+        'Client chat and real-time progress tracking',
+        'Automated billing with local payment methods',
       ],
       cta: 'Coming soon',
     },
@@ -112,6 +114,10 @@ export const en = {
 
   footer: {
     copy: `© ${new Date().getFullYear()} VillarTech. All rights reserved.`,
+    legalName: 'Lucas Villar Batista de Carvalho Cia Ltda - ME',
+    tradeName: 'Villar Consultoria e Tecnologia',
+    cnpjLabel: 'CNPJ',
+    cnpj: '53.074.782/0001-70',
     links: {
       services: 'Services',
       products: 'Products',

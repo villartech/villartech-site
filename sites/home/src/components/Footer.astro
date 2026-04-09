@@ -24,6 +24,16 @@ const i = t(lang);
 
     <p class="footer-copy">{i.footer.copy}</p>
   </div>
+
+  <div class="container footer-legal">
+    <span class="footer-legal-name">{i.footer.tradeName}</span>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <span class="footer-legal-entity">{i.footer.legalName}</span>
+    <span class="footer-legal-sep" aria-hidden="true">·</span>
+    <span class="footer-legal-cnpj">
+      {i.footer.cnpjLabel} <span class="footer-legal-cnpj-number">{i.footer.cnpj}</span>
+    </span>
+  </div>
 </footer>
 
 <style>
@@ -72,5 +82,33 @@ const i = t(lang);
   .footer-copy {
     font-size: var(--text-xs);
     color: var(--text-muted);
+  }
+
+  .footer-legal {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .footer-legal-name {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-legal-sep {
+    opacity: 0.5;
+  }
+
+  .footer-legal-cnpj-number {
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
   }
 </style>
